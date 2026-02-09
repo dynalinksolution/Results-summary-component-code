@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Summary Component</title>
+    <!-- Favicon link -->
+    <link rel="shortcut icon" href="images/favicon-32x32.png" type="image/x-icon">
+    <!-- Google Font Hanken Grotesk Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS styling -->
+    <style>
+        :root {
+            /* Primary */
+            --lyt-red: hsl(0, 100%, 67%);
+            --org-yel: hsl(39, 100%, 56%);
+            --grn-teal: hsl(166, 100%, 37%);
+            --cbt-blue: hsl(234, 85%, 45%);
+
+            /* Gradient */
+            --lyt-slt-blue: hsl(252, 100%, 67%);
+            --lyt-ryl-blue: hsl(241, 81%, 54%);
+
+            --vlt-blue: hsla(256, 72%, 46%, 1);
+            --prsn-blue: hsla(241, 72%, 46%, 0);
+
+            /* Neutral */
+            --white: hsl(0, 0%, 100%);
+            --pale-blue: hsl(221, 100%, 96%);
+            --lyt-lavender: hsl(241, 100%, 89%);
+            --drk-gry-blue: hsl(224, 30%, 27%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Hanken Grotesk", sans-serif;
+            font-size: 18px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--pale-blue);
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .components {
+            display: flex;
+            font-family: "Hanken Grotesk";
+            background: var(--white);
+            border-radius: 30px;
+        }
+
+        .component {
+            padding: 2em;
+        }
+
+        .grading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--lyt-slt-blue), var(--lyt-ryl-blue));
+            border-radius: 30px;
+        }
+        .summary {
+            background: var(--white); 
+        }
+
+        .grd-tlt {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .grading p,
+        .grading span {
+            color: var(--lyt-lavender);
+        }
+
+        .remrk {
+            color: var(--white) !important;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .remrk-txt {
+            width: 250px;
+        }
+
+        .score {
+            padding: 2em 3em;
+            margin: 2em 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to bottom, var(--vlt-blue), var(--prsn-blue));
+            border-radius: 100%;
+        }
+
+        .score p {
+            font-size: 68px;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .smry {
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--drk-gry-blue);
+            margin-bottom: 2em;
+        }
+
+        .cart {
+            display: flex;
+            justify-content: space-between;
+            width: 250px;
+            margin-bottom: .8em;
+            padding: 0.8em;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+        .cart span {
+            color: var(--lyt-lavender);
+        }
+
+        .cart-txt {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--drk-gry-blue);
+        }
+        .reaction {
+            background: hsla(0, 100%, 67%, .1);
+        }
+        .react {
+            color: var(--lyt-red);
+        }
+        .memory {
+            background: hsla(39, 100%, 56%, .1);
+        }
+        .memo {
+            color: var(--org-yel);
+        }
+        .verbal {
+            background: hsla(166, 100%, 37%, .1);
+        }
+        .vrb {
+            color: var(--grn-teal);
+        }
+        .virtual {
+            background: hsla(234, 85%, 45%, .1);
+        }
+        .virt {
+            color: var(--cbt-blue);
+        }
+        button {
+            margin-top: 1.2em;
+            width: 100%;
+            padding: 0.8em;
+            background: var(--drk-gry-blue);
+            color: var(--white);
+            font-weight: 700;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: .2s;
+        }
+        button:hover {
+            background: var(--cbt-blue);
+        }
+
+
+        /* Mobile view */
+        @media (max-width: 675px) {
+            .container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: fit-content !important;
+                padding: 2em 0;
+            }
+            .components {
+                flex-direction: column;
+                width: unset;
+                /* height: 100vh; */
+            }
+            .grading, .summary {
+                width: 100%;
+            }
+            .remrk-txt {
+                width: 300px;
+            }
+            .grading {
+                box-shadow: 0 10px 15px hsla(241, 81%, 54%, .2);
+                z-index: 99;
+            }
+            .summary {
+                border-radius: 30px;
+            }
+            .cart {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .container {
+                padding: 0;
+            }
+            .grading {
+                border-radius: 0 0 30px 30px;
+                padding: 20px 36px;
+            }
+            .score {
+                padding: 1em 2em;
+                margin: 0.5em 0;
+            }
+            .score p {
+                font-size: 48px;
+            }
+            .remrk {
+                font-size: 20px;
+            }
+             .remrk-txt {
+                width: 100%;
+            }
+             .summary {
+                border-radius: 30px 30px 0 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main">
+        <div class="components">
+            <div class="grading component">
+                <p class="grd-tlt">Your Result</p>
+                <div class="score">
+                    <p>76</p><span>of 100</span>
+                </div>
+                <div class="remark">
+                    <p class="remrk">Great</p>
+                    <p class="remrk-txt">You scored higher than 65% of the people who have taken these tests.</p>
+                </div>
+            </div>
+            <div class="summary component">
+                <p class="smry">Summary</p>
+                <div class="carts">
+                    <div class="cart reaction">
+                        <div class="cart-txt">
+                            <img src="images/icon-reaction.svg" alt="">
+                            <p class="react">Reaction</p>
+                        </div>
+                        <div class="cart-score">
+                            <p>80 <span>/ 100</span></p>
+                        </div>
+                    </div>
+                    <div class="cart memory">
+                        <div class="cart-txt">
+                            <img src="images/icon-memory.svg" alt="">
+                            <p class="memo">Memory</p>
+                        </div>
+                        <div class="cart-score">
+                            <p>92 <span>/ 100</span></p>
+                        </div>
+                    </div>
+                    <div class="cart verbal">
+                        <div class="cart-txt">
+                            <img src="images/icon-verbal.svg" alt="">
+                            <p class="vrb">Verbal</p>
+                        </div>
+                        <div class="cart-score">
+                            <p>61 <span>/ 100</span></p>
+                        </div>
+                    </div>
+                    <div class="cart virtual">
+                        <div class="cart-txt">
+                            <img src="images/icon-visual.svg" alt="">
+                            <p class="virt">Visual</p>
+                        </div>
+                        <div class="cart-score">
+                            <p>73 <span>/ 100</span></p>
+                        </div>
+                    </div>
+                </div>
+                <button>Continue</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html
